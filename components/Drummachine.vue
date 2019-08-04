@@ -4,15 +4,29 @@
 
   <v-btn v-on:click="stop">Stop audio</v-btn>
 
-<ul>
-  <li v-for="(step, index) in pattern.tracks[0].steps">
-    <Step :index="index" :active="step" :playing="index === currentStep" />
-  </li>
-</ul>
+<div v-for="track in pattern.tracks">
+  <h2>{{ track.instrument }}</h2>
+  <ul>
+    <li v-for="(step, index) in track.steps">
+      <Step :index="index" :active="step" :playing="index === currentStep" />
+    </li>
+  </ul>
+</div>
 
 
 </div>
 </template>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding-left: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    border: 1px solid green;
+  }
+</style>
 
 <script>
 import AudioEngine from '~/plugins/audioEngine.js'
@@ -23,22 +37,22 @@ const pattern = {
     stepCount: 16,
     beatsPerMinute: 100,
     tracks: [
-        // {
-        //   instrument: "hihat",
-        //   steps: [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
-        // },
+        {
+          instrument: "hihat",
+          steps: [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
+        },
         {
           instrument: "snare",
           steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
         },
-        // {
-        //   instrument: "clap",
-        //   steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-        // },
-        // {
-        //   instrument: "kick",
-        //   steps: [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0]
-        // }
+        {
+          instrument: "clap",
+          steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+        },
+        {
+          instrument: "kick",
+          steps: [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0]
+        }
     ]
 }
 
@@ -66,7 +80,7 @@ const pattern = {
     },
     methods: {
       start: function () {
-        this.$data.audioEngine.startClock(30);
+        this.$data.audioEngine.startClock(60);
       },
       stop: function () {
         this.$data.audioEngine.stopClock();
