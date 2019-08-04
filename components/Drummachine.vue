@@ -43,7 +43,7 @@ const pattern = {
 }
 
   export default {
-    name: "Sound",
+    name: "Drummachine",
     components: {
       Step
     },

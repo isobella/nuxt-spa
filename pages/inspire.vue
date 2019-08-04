@@ -7,7 +7,7 @@
         class="mb-5"
       >
 
-      <Sound />
+      <Drummachine />
       <blockquote class="blockquote">
         &#8220;First, solve the problem. Then, write the code.&#8221;
         <footer>
@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import Sound from '~/components/Sound.vue'
+import Drummachine from '~/components/Drummachine.vue'
 export default {
   components: {
-    Sound
+    Drummachine
   }
 }
 </script>
