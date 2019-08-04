@@ -1,3 +1,5 @@
+// credit: https://github.com/noops-challenge/drumbot
+
 import SamplePlayer from './SamplePlayer';
 
 const samples = [

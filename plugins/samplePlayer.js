@@ -1,3 +1,5 @@
+// credit: https://github.com/noops-challenge/drumbot
+
 // Play a sample loaded from a file
 export default class SamplePlayer {
   constructor (buffer) {
