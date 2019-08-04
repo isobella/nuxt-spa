@@ -4,15 +4,13 @@
 
   <v-btn v-on:click="stop">Stop audio</v-btn>
 
-<div v-for="track in pattern.tracks">
-  <h2>{{ track.instrument }}</h2>
-  <ul>
-    <li v-for="(step, index) in track.steps">
-      <Step :index="index" :active="step" :playing="index === currentStep" />
-    </li>
-  </ul>
-</div>
-
+  <Track
+    v-for="track in pattern.tracks"
+    :key="track.instrument"
+    :instrument="track.instrument"
+    :steps="track.steps"
+    :currentStep="currentStep"
+  />
 
 </div>
 </template>
@@ -30,7 +28,7 @@
 
 <script>
 import AudioEngine from '~/plugins/audioEngine.js'
-import Step from '~/components/Step.vue'
+import Track from '~/components/Track.vue'
 
 const pattern = {
     name: "botthisway",
@@ -59,7 +57,7 @@ const pattern = {
   export default {
     name: "Drummachine",
     components: {
-      Step
+      Track
     },
     created: function () {
       const audioEngine = new AudioEngine({ onStep: ({ position }) => {
