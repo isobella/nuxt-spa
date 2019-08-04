@@ -1,8 +1,18 @@
 <template>
 <div>
-  <v-btn v-on:click="start">Play audio</v-btn>
+  <v-btn
+    v-on:click="start"
+    color="primary"
+  >
+    Play audio
+  </v-btn>
 
-  <v-btn v-on:click="stop">Stop audio</v-btn>
+  <v-btn
+    v-on:click="stop"
+    color="primary"
+  >
+    Stop audio
+  </v-btn>
 
   <Track
     v-for="track in pattern.tracks"
