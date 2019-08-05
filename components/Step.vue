@@ -1,10 +1,10 @@
 <template>
-    <span :class="{ active, playing }">step {{index + 1}}</span>
+    <span :class="{ active, playing }">{{index + 1}}</span>
 </template>
 
 <style>
   .active {
-    color: red;
+    color: var(--v-primary-base);
   }
   .playing {
     border: 1px solid red;
