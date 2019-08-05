@@ -20,21 +20,11 @@
     :instrument="track.instrument"
     :steps="track.steps"
     :currentStep="currentStep"
+    :beatsPerMinute="pattern.beatsPerMinute"
   />
 
 </div>
 </template>
-
-<style>
-  ul {
-    list-style-type: none;
-    padding-left: 0 !important;
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 0;
-    border: 1px solid green;
-  }
-</style>
 
 <script>
 import AudioEngine from '~/plugins/audioEngine.js'
@@ -43,7 +33,7 @@ import Track from '~/components/Track.vue'
 const pattern = {
     name: "botthisway",
     stepCount: 16,
-    beatsPerMinute: 100,
+    beatsPerMinute: 60,
     tracks: [
         {
           instrument: "hihat",
@@ -88,7 +78,7 @@ const pattern = {
     },
     methods: {
       start: function () {
-        this.$data.audioEngine.startClock(60);
+        this.$data.audioEngine.startClock(this.$data.pattern.beatsPerMinute);
       },
       stop: function () {
         this.$data.audioEngine.stopClock();

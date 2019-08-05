@@ -2,17 +2,26 @@
   <div class="trackContainer">
     <h2>{{ instrument }}</h2>
     <ul>
-      <li v-for="(step, index) in steps">
-        <Step :index="index" :active="step" :playing="index === currentStep" />
-      </li>
+      <Step
+        v-for="(step, index) in steps" :key="index"
+        :stepNumber="index + 1"
+        :active="step"
+        :playing="index === currentStep"
+        :beatsPerMinute="beatsPerMinute"
+      />
     </ul>
   </div>
 </template>
 
 <style>
-  /* .trackContainer {
-    background: pink;
-  } */
+  ul {
+    list-style-type: none;
+    padding-left: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    border: 1px solid green;
+  }
 </style>
 
 <script>
@@ -32,6 +41,10 @@ import Step from '~/components/Step.vue'
         required: true
       },
       currentStep: {
+        type: Number,
+        required: true
+      },
+      beatsPerMinute: {
         type: Number,
         required: true
       }
