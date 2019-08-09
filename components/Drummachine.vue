@@ -14,17 +14,27 @@
     Stop audio
   </v-btn>
 
-  <Track
-    v-for="track in pattern.tracks"
-    :key="track.instrument"
-    :instrument="track.instrument"
-    :steps="track.steps"
-    :currentStep="currentStep"
-    :beatsPerMinute="pattern.beatsPerMinute"
-  />
+  <div class="tracksContainer">
+    <Track
+      v-for="track in pattern.tracks"
+      :key="track.instrument"
+      :instrument="track.instrument"
+      :steps="track.steps"
+      :currentStep="currentStep"
+      :beatsPerMinute="pattern.beatsPerMinute"
+    />
+  </div>
 
 </div>
 </template>
+
+<style>
+  .tracksContainer {
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+</style>
+
 
 <script>
 import AudioEngine from '~/plugins/audioEngine.js'

@@ -1,6 +1,6 @@
 <template>
   <div class="trackContainer">
-    <h2>{{ instrument }}</h2>
+    <!-- <h2>{{ instrument }}</h2> -->
     <ul>
       <Step
         v-for="(step, index) in steps" :key="index"
@@ -19,7 +19,6 @@
     padding-left: 0 !important;
     display: flex;
     justify-content: space-between;
-    margin: 1rem 0;
   }
 </style>
 
