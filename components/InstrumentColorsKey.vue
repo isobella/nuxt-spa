@@ -18,6 +18,13 @@
   .colorKeyList {
     list-style-type: none;
     padding-left: 0 !important;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  @media (min-width: 960px) {
+    .colorKeyList {
+      grid-template-columns: 25% 25% 25% 25%;
+    }
   }
 </style>
 
