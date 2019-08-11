@@ -1,6 +1,17 @@
 <template>
   <li
-    :class="{ step: true, active, playing }">
+    :class="{
+      step: true,
+      active,
+      playing,
+      hihat,
+      clap,
+      cowbell,
+      kick,
+      ride,
+      rim,
+      snare
+    }">
     </li>
 </template>
 
@@ -13,34 +24,97 @@
     border-bottom: 1px solid var(--v-primary-darken1);
     border-top: 1px solid var(--v-primary-darken1);
   }
-  .active {
-    box-shadow: inset 0px 0px 5px var(--v-accent-darken1);
-    background-color: var(--v-accent-base);
-    transition: background-color 0.2s;
-    /* animation: pulse 6s infinite; */
-    border-left-color: var(--v-accent-darken1);
-    border-bottom-color: var(--v-accent-darken1);
-    border-top-color: var(--v-accent-darken1);
-  }
   .playing {
     background-color: var(--v-primary-lighten1);
     border-color: var(--v-primary-base);
   }
-  .playing.active {
-    background-color: var(--v-accent-lighten2);
-    border-color: var(--v-accent-base);
+
+  .active {
+    transition: background-color 0.2s;
   }
 
-  @keyframes pulse {
-    0% {
-      box-shadow: inset 0px 0px 5px var(--v-accent-darken1);
-    }
-    50% {
-      box-shadow: inset 0px 0px 100px var(--v-accent-darken1);
-    }
-    100% {
-      box-shadow: inset 0px 0px 5px var(--v-accent-darken1);
-    }
+  .active.clap {
+    box-shadow: inset 0px 0px 5px var(--v-clapColor-darken1);
+    background-color: var(--v-clapColor-base);
+    border-left-color: var(--v-clapColor-darken1);
+    border-bottom-color: var(--v-clapColor-darken1);
+    border-top-color: var(--v-clapColor-darken1);
+  }
+  .playing.active.clap {
+    background-color: var(--v-clapColor-lighten2);
+    border-color: var(--v-clapColor-base);
+  }
+
+  .active.cowbell {
+    box-shadow: inset 0px 0px 5px var(--v-cowbellColor-darken1);
+    background-color: var(--v-cowbellColor-base);
+    border-left-color: var(--v-cowbellColor-darken1);
+    border-bottom-color: var(--v-cowbellColor-darken1);
+    border-top-color: var(--v-cowbellColor-darken1);
+  }
+  .playing.active.cowbell {
+    background-color: var(--v-cowbellColor-lighten2);
+    border-color: var(--v-cowbellColor-base);
+  }
+
+  .active.hihat {
+    box-shadow: inset 0px 0px 5px var(--v-hihatColor-darken1);
+    background-color: var(--v-hihatColor-base);
+    border-left-color: var(--v-hihatColor-darken1);
+    border-bottom-color: var(--v-hihatColor-darken1);
+    border-top-color: var(--v-hihatColor-darken1);
+  }
+  .playing.active.hihat {
+    background-color: var(--v-hihatColor-lighten2);
+    border-color: var(--v-hihatColor-base);
+  }
+
+  .active.kick {
+    box-shadow: inset 0px 0px 5px var(--v-kickColor-darken1);
+    background-color: var(--v-kickColor-base);
+    border-left-color: var(--v-kickColor-darken1);
+    border-bottom-color: var(--v-kickColor-darken1);
+    border-top-color: var(--v-kickColor-darken1);
+  }
+  .playing.active.kick {
+    background-color: var(--v-kickColor-lighten2);
+    border-color: var(--v-kickColor-base);
+  }
+
+  .active.ride {
+    box-shadow: inset 0px 0px 5px var(--v-rideColor-darken1);
+    background-color: var(--v-rideColor-base);
+    border-left-color: var(--v-rideColor-darken1);
+    border-bottom-color: var(--v-rideColor-darken1);
+    border-top-color: var(--v-rideColor-darken1);
+  }
+  .playing.active.ride {
+    background-color: var(--v-rideColor-lighten2);
+    border-color: var(--v-rideColor-base);
+  }
+
+  .active.rim {
+    box-shadow: inset 0px 0px 5px var(--v-rimColor-darken1);
+    background-color: var(--v-rimColor-base);
+    border-left-color: var(--v-rimColor-darken1);
+    border-bottom-color: var(--v-rimColor-darken1);
+    border-top-color: var(--v-rimColor-darken1);
+  }
+  .playing.active.rim {
+    background-color: var(--v-rimColor-lighten2);
+    border-color: var(--v-rimColor-base);
+  }
+
+  .active.snare {
+    box-shadow: inset 0px 0px 5px var(--v-snareColor-darken1);
+    background-color: var(--v-snareColor-base);
+    border-left-color: var(--v-snareColor-darken1);
+    border-bottom-color: var(--v-snareColor-darken1);
+    border-top-color: var(--v-snareColor-darken1);
+  }
+  .playing.active.snare {
+    background-color: var(--v-snareColor-lighten2);
+    border-color: var(--v-snareColor-base);
   }
 
 </style>
@@ -63,6 +137,34 @@
       },
       beatsPerMinute: {
         type: Number,
+        required: true
+      },
+      hihat: {
+        type: Boolean,
+        required: true
+      },
+      clap: {
+        type: Boolean,
+        required: true
+      },
+      cowbell: {
+        type: Boolean,
+        required: true
+      },
+      kick: {
+        type: Boolean,
+        required: true
+      },
+      ride: {
+        type: Boolean,
+        required: true
+      },
+      rim: {
+        type: Boolean,
+        required: true
+      },
+      snare: {
+        type: Boolean,
         required: true
       }
     },

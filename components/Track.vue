@@ -8,6 +8,13 @@
         :active="step"
         :playing="index === currentStep"
         :beatsPerMinute="beatsPerMinute"
+        :clap="instrument === 'clap'"
+        :cowbell="instrument === 'cowbell'"
+        :hihat="instrument === 'hihat'"
+        :kick="instrument === 'kick'"
+        :ride="instrument === 'ride'"
+        :rim="instrument === 'rim'"
+        :snare="instrument === 'snare'"
       />
     </ul>
   </div>

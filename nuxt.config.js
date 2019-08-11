@@ -61,7 +61,15 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.accent3,
+
+          hihatColor: colors.green.base,
+          clapColor: colors.pink.base,
+          cowbellColor: colors.purple.base,
+          kickColor: colors.lime.base,
+          rideColor: colors.red.base,
+          rimColor: colors.blue.base,
+          snareColor: colors.orange.base
         }
       }
     }
