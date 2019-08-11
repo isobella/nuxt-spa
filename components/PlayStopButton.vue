@@ -3,8 +3,10 @@
     <v-btn
       v-on:click="toggle"
       color="primary"
+      outlined
     >
       {{ buttonText }}
+      <v-icon>{{ icon }}</v-icon>
     </v-btn>
 </template>
 
@@ -30,7 +32,10 @@
     },
     computed: {
       buttonText: function () {
-        return (this.playing) ? 'Stop audio' : 'Play audio'
+        return (this.playing) ? 'Stop' : 'Play'
+      },
+      icon: function () {
+        return (this.playing) ? 'mdi-stop' : 'mdi-play'
       }
     },
     methods: {
