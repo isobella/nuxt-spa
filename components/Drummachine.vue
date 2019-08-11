@@ -25,6 +25,9 @@
     />
   </div>
 
+  <InstrumentColorsKey :instruments="instuments"/>
+  
+
 </div>
 </template>
 
@@ -39,6 +42,17 @@
 <script>
 import AudioEngine from '~/plugins/audioEngine.js'
 import Track from '~/components/Track.vue'
+import InstrumentColorsKey from '~/components/InstrumentColorsKey.vue'
+
+const instuments = [
+  'hihat',
+  'snare',
+  'clap',
+  'kick',
+  'cowbell',
+  'ride',
+  'rim'
+]
 
 const pattern = {
     name: "botthisway",
@@ -80,7 +94,8 @@ const pattern = {
   export default {
     name: "Drummachine",
     components: {
-      Track
+      Track,
+      InstrumentColorsKey
     },
     created: function () {
       const audioEngine = new AudioEngine({ onStep: ({ position }) => {
@@ -96,6 +111,7 @@ const pattern = {
     data: () => {
       return {
         pattern: pattern,
+        instuments: instuments,
         currentStep: -1
       }
     },
