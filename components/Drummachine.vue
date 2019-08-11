@@ -1,18 +1,11 @@
 <template>
 <div>
-  <v-btn
-    v-on:click="start"
-    color="primary"
-  >
-    Play audio
-  </v-btn>
 
-  <v-btn
-    v-on:click="stop"
-    color="primary"
-  >
-    Stop audio
-  </v-btn>
+  <PlayStopButton
+    :play="start"
+    :playing="playing"
+    :stop="stop"
+  />
 
   <div class="tracksContainer">
     <Track
@@ -41,6 +34,7 @@
 
 <script>
 import AudioEngine from '~/plugins/audioEngine.js'
+import PlayStopButton from '~/components/PlayStopButton.vue'
 import Track from '~/components/Track.vue'
 import InstrumentColorsKey from '~/components/InstrumentColorsKey.vue'
 
@@ -95,7 +89,8 @@ const pattern = {
     name: "Drummachine",
     components: {
       Track,
-      InstrumentColorsKey
+      InstrumentColorsKey,
+      PlayStopButton
     },
     created: function () {
       const audioEngine = new AudioEngine({ onStep: ({ position }) => {
@@ -112,15 +107,18 @@ const pattern = {
       return {
         pattern: pattern,
         instuments: instuments,
-        currentStep: -1
+        currentStep: -1,
+        playing: false
       }
     },
     methods: {
       start: function () {
         this.$data.audioEngine.startClock(this.$data.pattern.beatsPerMinute);
+        this.$data.playing = true;
       },
       stop: function () {
         this.$data.audioEngine.stopClock();
+        this.$data.playing = false;
       },
       onStep: function (position) {
         this.$data.currentStep = position.step
