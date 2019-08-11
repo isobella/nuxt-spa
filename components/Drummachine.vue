@@ -3,7 +3,7 @@
 
     <v-select
       :items="patternNames"
-      label="Preset track"
+      label="Preset tracks"
       :value="selectedTrackIndex"
       v-on:change="changeTrack"
       :disabled="playing"
@@ -82,24 +82,47 @@ const patterns = [
   "stepCount": 16,
   "beatsPerMinute": 110,
   "tracks": [
-    {
-      "instrument": "ride",
-      "steps": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
-    },
-    {
-      "instrument": "hihat",
-      "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-    },
-    {
-      "instrument": "rim",
-      "steps": [1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0]
-    },
-    {
-      "instrument": "kick",
-      "steps": [1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1]
-    }
-  ]
-}
+      {
+        "instrument": "ride",
+        "steps": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
+      },
+      {
+        "instrument": "hihat",
+        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+      },
+      {
+        "instrument": "rim",
+        "steps": [1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0]
+      },
+      {
+        "instrument": "kick",
+        "steps": [1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1]
+      }
+    ]
+  },
+  {
+  "name": "nipnop",
+  "stepCount": 16,
+  "beatsPerMinute": 92,
+  "tracks": [
+      {
+        "instrument": "snare",
+        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+      },
+      {
+        "instrument": "clap",
+        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1]
+      },
+      {
+        "instrument": "cowbell",
+        "steps": [0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0]
+      },
+      {
+        "instrument": "kick",
+        "steps": [1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0]
+      }
+    ]
+  }
 ]
   export default {
     name: "Drummachine",
