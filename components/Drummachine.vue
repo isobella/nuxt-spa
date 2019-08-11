@@ -1,6 +1,15 @@
 <template>
 <div>
 
+    <v-select
+      :items="patternNames"
+      label="Preset track"
+      :value="selectedTrackIndex"
+      v-on:change="changeTrack"
+      :disabled="playing"
+      outlined
+    ></v-select>
+
   <PlayStopButton
     :play="start"
     :playing="playing"
@@ -147,6 +156,17 @@ const patterns = [
         selectedTrackIndex: 1
       }
     },
+    computed: {
+      patternNames: function () {
+        const patterns = this.$data.patterns
+        return patterns.map((pattern, index) => {
+          return {
+            text: pattern.name,
+            value: index
+          }
+        })
+      }
+    },
     methods: {
       start: function () {
         this.$data.audioEngine.startClock(this.$data.patterns[this.$data.selectedTrackIndex].beatsPerMinute);
@@ -158,6 +178,10 @@ const patterns = [
       },
       onStep: function (position) {
         this.$data.currentStep = position.step
+      },
+      changeTrack: function (index) {
+        this.$data.audioEngine.setPattern(this.$data.patterns[index])
+        this.$data.selectedTrackIndex = index
       }
     }
   }
