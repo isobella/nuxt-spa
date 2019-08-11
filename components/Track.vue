@@ -19,6 +19,7 @@
     padding-left: 0 !important;
     display: flex;
     justify-content: space-between;
+    /* margin-bottom: 1rem; */
   }
 </style>
 

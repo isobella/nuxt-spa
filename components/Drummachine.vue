@@ -43,7 +43,7 @@ import Track from '~/components/Track.vue'
 const pattern = {
     name: "botthisway",
     stepCount: 16,
-    beatsPerMinute: 30,
+    beatsPerMinute: 60,
     tracks: [
         {
           instrument: "hihat",
