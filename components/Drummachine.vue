@@ -101,33 +101,6 @@ const patterns = [
   ]
 }
 ]
-
-
-
-// const pattern = {
-//     name: "botthisway",
-//     stepCount: 16,
-//     beatsPerMinute: 60,
-//     tracks: [
-//         {
-//           instrument: "hihat",
-//           steps: [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
-//         },
-//         {
-//           instrument: "snare",
-//           steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-//         },
-//         {
-//           instrument: "clap",
-//           steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-//         },
-//         {
-//           instrument: "kick",
-//           steps: [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0]
-//         }
-//     ]
-// }
-
   export default {
     name: "Drummachine",
     components: {
