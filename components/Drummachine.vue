@@ -9,12 +9,12 @@
 
   <div class="tracksContainer">
     <Track
-      v-for="track in pattern.tracks"
+      v-for="track in patterns[selectedTrackIndex].tracks"
       :key="track.instrument"
       :instrument="track.instrument"
       :steps="track.steps"
       :currentStep="currentStep"
-      :beatsPerMinute="pattern.beatsPerMinute"
+      :beatsPerMinute="patterns[selectedTrackIndex].beatsPerMinute"
     />
   </div>
 
@@ -48,42 +48,76 @@ const instuments = [
   'rim'
 ]
 
-const pattern = {
-    name: "botthisway",
-    stepCount: 16,
-    beatsPerMinute: 60,
-    tracks: [
-        {
-          instrument: "hihat",
-          steps: [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
-        },
-        {
-          instrument: "snare",
-          steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-        },
-        {
-          instrument: "clap",
-          steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-        },
-        {
-          instrument: "kick",
-          steps: [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0]
-        },
-
-        {
-          instrument: "cowbell",
-          steps: [0,1,0,0,0,1,0,0,1,0,1,0,0,1,0,0]
-        },
-        {
-          instrument: "ride",
-          steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1]
-        },
-        {
-          instrument: "rim",
-          steps: [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
-        }
+const patterns = [
+  {
+    "name": "oontza",
+    "stepCount": 16,
+    "beatsPerMinute": 110,
+    "tracks": [
+      {
+        "instrument": "hihat",
+        "steps": [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,1]
+      },
+      {
+        "instrument": "snare",
+        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+      },
+      {
+        "instrument": "kick",
+        "steps": [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
+      }
     ]
+  },
+  {
+  "name": "bossanoopa",
+  "stepCount": 16,
+  "beatsPerMinute": 110,
+  "tracks": [
+    {
+      "instrument": "ride",
+      "steps": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
+    },
+    {
+      "instrument": "hihat",
+      "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+    },
+    {
+      "instrument": "rim",
+      "steps": [1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0]
+    },
+    {
+      "instrument": "kick",
+      "steps": [1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1]
+    }
+  ]
 }
+]
+
+
+
+// const pattern = {
+//     name: "botthisway",
+//     stepCount: 16,
+//     beatsPerMinute: 60,
+//     tracks: [
+//         {
+//           instrument: "hihat",
+//           steps: [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
+//         },
+//         {
+//           instrument: "snare",
+//           steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+//         },
+//         {
+//           instrument: "clap",
+//           steps: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+//         },
+//         {
+//           instrument: "kick",
+//           steps: [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0]
+//         }
+//     ]
+// }
 
   export default {
     name: "Drummachine",
@@ -98,22 +132,24 @@ const pattern = {
       }})
 
       audioEngine.prepare().then(() => {
-        audioEngine.setPattern(this.$data.pattern)
+        // todo: show loading state while 'preparing'
+        audioEngine.setPattern(this.$data.patterns[this.$data.selectedTrackIndex])
       })
 
       this.$data.audioEngine = audioEngine
     },
     data: () => {
       return {
-        pattern: pattern,
+        patterns: patterns,
         instuments: instuments,
         currentStep: -1,
-        playing: false
+        playing: false,
+        selectedTrackIndex: 1
       }
     },
     methods: {
       start: function () {
-        this.$data.audioEngine.startClock(this.$data.pattern.beatsPerMinute);
+        this.$data.audioEngine.startClock(this.$data.patterns[this.$data.selectedTrackIndex].beatsPerMinute);
         this.$data.playing = true;
       },
       stop: function () {
