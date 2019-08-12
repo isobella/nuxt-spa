@@ -19,12 +19,15 @@
 <style>
   .colorKeyContainer {
     border: 1px solid var(--v-primary-base);
+    border-radius: 4px;
     display: flex;
     align-items: center;
   }
   .colorKey {
     width: 30px;
     height: 30px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
     margin-right: 0.5rem;
   }
   .instrumentText {
