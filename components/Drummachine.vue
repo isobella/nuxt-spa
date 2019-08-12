@@ -1,20 +1,29 @@
 <template>
 <div>
 
-    <v-select
-      :items="patternNames"
-      label="Preset tracks"
-      :value="selectedTrackIndex"
-      v-on:change="changeTrack"
-      :disabled="playing"
-      outlined
-    ></v-select>
+  <v-container grid-list-xl>
+    <v-layout align-center>
+      <v-flex xs6>
+        <v-select
+          :items="patternNames"
+          label="Preset tracks"
+          :value="selectedTrackIndex"
+          v-on:change="changeTrack"
+          :disabled="playing"
+          outlined
+          hide-details
+        ></v-select>
+      </v-flex>
 
-  <PlayStopButton
-    :play="start"
-    :playing="playing"
-    :stop="stop"
-  />
+      <v-flex xs6>
+        <PlayStopButton
+          :play="start"
+          :playing="playing"
+          :stop="stop"
+        />
+      </v-flex>
+    </v-layout>
+  </v-container>
 
   <div class="tracksContainer">
     <Track

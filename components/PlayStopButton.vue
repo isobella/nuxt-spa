@@ -4,6 +4,7 @@
       v-on:click="toggle"
       color="primary"
       outlined
+      block
     >
       {{ buttonText }}
       <v-icon>{{ icon }}</v-icon>

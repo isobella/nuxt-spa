@@ -1,5 +1,5 @@
 <template>
-  <li class="colorKeyListItem">
+  <v-flex xs6 sm3 md2>
     <div class="colorKeyContainer">
       <div :class="{
         colorKey: true,
@@ -13,44 +13,18 @@
       }" />
       <div class="instrumentText">= {{ instrument }}</div>
     </div>
-  </li>
+  </v-flex>
 </template>
 
 <style>
-  .colorKeyListItem {
-    margin: 1rem;
-    border: 2px solid var(--v-primary-base);
-  }
-
-  .colorKeyListItem:nth-child(odd) {
-    margin-left: 0;
-  }
-  .colorKeyListItem:nth-child(even) {
-    margin-right: 0;
-  }
-
-  @media (min-width: 960px) {
-    .colorKeyListItem:first-child, .colorKeyListItem:nth-child(5) {
-      margin-left: 0 !important;
-    }
-    .colorKeyListItem:nth-child(odd) {
-      margin-left: 1rem;
-    }
-    .colorKeyListItem:nth-child(even) {
-      margin-right: 1rem;
-    }
-    .colorKeyListItem:nth-child(4) {
-      margin-right: 0;
-    }
-  }
-
   .colorKeyContainer {
+    border: 1px solid var(--v-primary-base);
     display: flex;
     align-items: center;
   }
   .colorKey {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     margin-right: 0.5rem;
   }
   .instrumentText {
