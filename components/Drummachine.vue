@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <v-container grid-list-xl>
+  <v-container grid-list-xl class="fill-width">
     <v-layout align-center>
       <v-flex xs6>
         <v-select
@@ -43,6 +43,10 @@
 </template>
 
 <style>
+  .container.fill-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .tracksContainer {
     margin-top: 1rem;
     overflow: hidden;

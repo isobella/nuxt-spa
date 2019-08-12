@@ -1,5 +1,5 @@
 <template>
-    <v-container grid-list-sm>
+    <v-container grid-list-sm class="fill-width">
       <v-layout wrap>
         <InstrumentColorKey
           v-for="(instrument, index) in instruments" :key="index"
