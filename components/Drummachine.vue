@@ -204,6 +204,29 @@ const patterns = [
         "steps": [1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0]
       }
     ]
+  },
+  {
+  "name": "botorik",
+  "stepCount": 16,
+  "beatsPerMinute": 120,
+  "tracks": [
+      {
+        "instrument": "hihat",
+        "steps": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
+      },
+      {
+        "instrument": "snare",
+        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+      },
+      {
+        "instrument": "kick",
+        "steps": [1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0]
+      },
+      {
+        "instrument": "cowbell",
+        "steps": [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
+      }
+    ]
   }
 ]
   export default {
