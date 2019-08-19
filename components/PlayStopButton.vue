@@ -5,6 +5,7 @@
       color="primary"
       outlined
       block
+      class="playButton"
     >
       {{ buttonText }}
       <v-icon>{{ icon }}</v-icon>
@@ -12,6 +13,9 @@
 </template>
 
 <style>
+  .playButton {
+    min-height: 100%;
+  }
 </style>
 
 <script>

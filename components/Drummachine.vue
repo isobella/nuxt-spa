@@ -2,7 +2,7 @@
 <div>
 
   <v-container grid-list-xl class="fill-width">
-    <v-layout align-center>
+    <v-layout fill-height>
       <v-flex xs6>
         <v-select
           :items="patternNames"
