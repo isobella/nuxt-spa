@@ -57,7 +57,7 @@ export default {
         }
       ],
       right: true,
-      title: 'Drum machine!'
+      title: `Bella's Beat Bot`
     }
   }
 }
