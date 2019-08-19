@@ -227,6 +227,71 @@ const patterns = [
         "steps": [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
       }
     ]
+  },
+  {
+  "name": "swoop",
+  "stepCount": 12,
+  "beatsPerMinute": 95,
+  "tracks": [
+      {
+        "instrument": "ride",
+        "steps": [1,0,1,0,1,0,1,0,1,0,1,0]
+      },
+      {
+        "instrument": "hihat",
+        "steps": [0,0,0,1,0,0,0,0,0,0,1,0]
+      },
+      {
+        "instrument": "rim",
+        "steps": [0,0,0,0,0,0,1,0,0,0,0,0]
+      },
+      {
+        "instrument": "kick",
+        "steps": [1,0,0,0,1,0,0,0,0,0,1,0]
+      }
+    ]
+  },
+  {
+  "name": "schmaltz",
+  "stepCount": 12,
+  "beatsPerMinute": 105,
+  "tracks": [
+      {
+        "instrument": "ride",
+        "steps": [1,0,1,0,1,0,1,0,0,1,0,0]
+      },
+      {
+        "instrument": "hihat",
+        "steps": [0,0,0,1,0,0,0,0,0,0,1,0]
+      },
+      {
+        "instrument": "rim",
+        "steps": [0,0,1,0,1,0,0,0,1,0,1,0]
+      },
+      {
+        "instrument": "kick",
+        "steps": [1,0,0,0,0,0,1,0,0,0,0,0]
+      }
+    ]
+  },
+  {
+  "name": "bouncy",
+  "stepCount": 16,
+  "beatsPerMinute": 125,
+  "tracks": [
+      {
+        "instrument": "hihat",
+        "steps": [1,0,1,1,1,0,0,1,1,0,1,1,1,0,0,1]
+      },
+      {
+        "instrument": "rim",
+        "steps": [0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0]
+      },
+      {
+        "instrument": "kick",
+        "steps": [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
+      }
+    ]
   }
 ]
   export default {
