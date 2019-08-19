@@ -158,6 +158,29 @@ const patterns = [
         "steps": [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0]
       }
     ]
+  },
+  {
+  "name": "funkee",
+  "stepCount": 16,
+  "beatsPerMinute": 94,
+  "tracks": [
+      {
+        "instrument": "hihat",
+        "steps": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+      },
+      {
+        "instrument": "rim",
+        "steps": [0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0]
+      },
+      {
+        "instrument": "snare",
+        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
+      },
+      {
+        "instrument": "kick",
+        "steps": [1,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0]
+      }
+    ]
   }
 ]
   export default {
