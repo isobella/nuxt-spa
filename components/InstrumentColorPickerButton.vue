@@ -1,6 +1,7 @@
 <template>
   <v-flex xs6 sm3 md2>
     <v-btn
+      v-on:click="openColorPicker"
       outlined
       block
       large
@@ -37,9 +38,6 @@
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     margin-right: 0.5rem;
-  }
-  .instrumentText {
-    text-transform: capitalize;
   }
   .colorKey.clap {
     box-shadow: inset 0px 0px 5px var(--v-clapColor-darken1);
@@ -88,7 +86,7 @@
 <script>
     // use a dialog
   export default {
-    name: "InstrumentColorPicker",
+    name: "InstrumentColorPickerButton",
     props: {
       instrument: {
         type: String,
@@ -121,6 +119,11 @@
       snare: {
         type: Boolean,
         required: true
+      }
+    },
+    methods: {
+      openColorPicker: function () {
+        this.$store.commit('colorPicker/open', { open: true, instrument: this.instrument })
       }
     }
   }

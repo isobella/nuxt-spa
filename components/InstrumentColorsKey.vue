@@ -1,7 +1,7 @@
 <template>
     <v-container grid-list-lg class="fill-width">
       <v-layout wrap>
-        <InstrumentColorPicker
+        <InstrumentColorPickerButton
           v-for="(instrument, index) in instruments" :key="index"
           :instrument="instrument"
           :clap="instrument === 'clap'"
@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import InstrumentColorPicker from '~/components/InstrumentColorPicker.vue'
+import InstrumentColorPickerButton from '~/components/InstrumentColorPickerButton.vue'
   export default {
     name: "InstrumentColorsKey",
     components: {
-      InstrumentColorPicker
+      InstrumentColorPickerButton
     },
     props: {
       instruments: {

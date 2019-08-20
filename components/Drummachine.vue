@@ -37,6 +37,10 @@
   </div>
 
   <InstrumentColorsKey :instruments="instuments"/>
+
+  <ColorPickerModal
+    :open="colorPickerOpen"
+    />
   
 </div>
 </template>
@@ -58,6 +62,7 @@ import AudioEngine from '~/plugins/audioEngine.js'
 import PlayStopButton from '~/components/PlayStopButton.vue'
 import Track from '~/components/Track.vue'
 import InstrumentColorsKey from '~/components/InstrumentColorsKey.vue'
+import ColorPickerModal from '~/components/ColorPickerModal.vue'
 
 const instuments = [
   'hihat',
@@ -298,7 +303,8 @@ const patterns = [
     components: {
       Track,
       InstrumentColorsKey,
-      PlayStopButton
+      PlayStopButton,
+      ColorPickerModal
     },
     created: function () {
       const audioEngine = new AudioEngine({ onStep: ({ position }) => {
@@ -330,6 +336,9 @@ const patterns = [
             value: index
           }
         })
+      },
+      colorPickerOpen: function () {
+        return this.$store.state.colorPicker.open
       }
     },
     // watch: {
