@@ -1,7 +1,12 @@
 <template>
   <v-flex xs6 sm3 md2>
-    <div class="colorKeyContainer">
-      <div :class="{
+    <v-btn
+      outlined
+      block
+      large
+      class="colorPickerButton"
+    >
+      <span :class="{
         colorKey: true,
         hihat,
         clap,
@@ -11,22 +16,24 @@
         rim,
         snare
       }" />
-      <div class="instrumentText">= {{ instrument }}</div>
-      <v-color-picker />
-    </div>
+      <span class="colorPickerButtonText">
+      {{ instrument }}
+      </span>
+    </v-btn>
   </v-flex>
 </template>
 
 <style>
-  .colorKeyContainer {
-    border: 1px solid var(--v-primary-base);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
+  .colorPickerButton {
+    padding-left: 0 !important;
+    justify-content: space-between;
+  }
+  .colorPickerButtonText {
+    flex: 1 0 auto;
   }
   .colorKey {
-    width: 30px;
-    height: 30px;
+    flex: 0 0 44px;
+    height: 42px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     margin-right: 0.5rem;

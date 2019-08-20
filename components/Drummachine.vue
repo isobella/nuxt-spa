@@ -37,17 +37,6 @@
   </div>
 
   <InstrumentColorsKey :instruments="instuments"/>
-
-  <InstrumentColorPicker
-    :instrument="instuments[0]"
-    :hihat="true"
-    :snare="false"
-    :clap="false"
-    :kick="false"
-    :cowbell="false"
-    :ride="false"
-    :rim="false"
-  />
   
 </div>
 </template>
@@ -69,7 +58,6 @@ import AudioEngine from '~/plugins/audioEngine.js'
 import PlayStopButton from '~/components/PlayStopButton.vue'
 import Track from '~/components/Track.vue'
 import InstrumentColorsKey from '~/components/InstrumentColorsKey.vue'
-import InstrumentColorPicker from '~/components/InstrumentColorPicker.vue'
 
 const instuments = [
   'hihat',
@@ -310,8 +298,7 @@ const patterns = [
     components: {
       Track,
       InstrumentColorsKey,
-      PlayStopButton,
-      InstrumentColorPicker
+      PlayStopButton
     },
     created: function () {
       const audioEngine = new AudioEngine({ onStep: ({ position }) => {
