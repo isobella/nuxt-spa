@@ -341,27 +341,6 @@ const patterns = [
         return this.$store.state.colorPicker.open
       }
     },
-    // watch: {
-    //   color: function (color) {
-    //     // --v-hihatColor-base: 
-    //     // --v-hihatColor-lighten2: #85e783;
-    //     // --v-hihatColor-darken1: #2d9437;
-
-    //     // --v-hihatColor-lighten5: #dcffd6;
-    //     // --v-hihatColor-lighten4: #beffba;
-    //     // --v-hihatColor-lighten3: #a2ff9e;
-    //     // --v-hihatColor-lighten1: #69cb69;
-    //     // --v-hihatColor-darken2: #00791e;
-    //     // --v-hihatColor-darken3: #006000;
-    //     // --v-hihatColor-darken4: #004700;
-
-    //     let root = document.documentElement
-
-    //     root.style.setProperty('--v-hihatColor-base', color)
-
-    //     root.style.setProperty('--v-hihatColor-darken1', '#EC407A')
-    //   }
-    // },
     methods: {
       start: function () {
         this.$data.audioEngine.startClock(this.$data.patterns[this.$data.selectedTrackIndex].beatsPerMinute);
