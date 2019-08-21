@@ -11,11 +11,12 @@
       </v-card-title>
         <v-card-text class="colorPickerContainer">
           <v-color-picker
+            class="test"
             width="auto"
             mode="hexa"
             flat
             hide-canvas
-            hide-inputs
+            hide-mode-switch
             :value="color"
             v-on:update:color="updateColor"
             show-swatches
@@ -49,6 +50,9 @@
   }
   .inverse {
     color: #ffffff
+  }
+  .test {
+    border: 1px solid red;
   }
 </style>
 
