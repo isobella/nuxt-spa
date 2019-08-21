@@ -15,7 +15,8 @@
             flat
             hide-canvas
             hide-inputs
-            v-model="color"
+            :value="color"
+            v-on:update:color="updateColor"
             show-swatches
             />
         </v-card-text>
@@ -55,13 +56,24 @@
         required: true
       }
     },
-    data: () => {
-      return {
-        color: ''
+    computed: {
+      instrument: function () {
+        return this.$store.state.colorPicker.instrument
+      },
+      buttonColor: function () {
+        const { instrument } = this
+        return `${instrument}Color`
+      },
+      color: function () {
+        const { instrument } = this
+        return this.$store.state.instrumentColors[instrument]
       }
     },
-    watch: {
-      color: function (color) {
+    methods: {
+      close: function () {
+        this.$store.commit('colorPicker/close')
+      },
+      updateColor: function ({ hex }) {
         // --v-hihatColor-base: 
         // --v-hihatColor-lighten2: #85e783;
         // --v-hihatColor-darken1: #2d9437;
@@ -78,25 +90,13 @@
 
         let root = document.documentElement
 
-        root.style.setProperty(`--v-${instrument}Color-base`, color)
+        root.style.setProperty(`--v-${instrument}Color-base`, hex)
+
+        this.$store.commit('instrumentColors/changeInstrumentColor', { instrument: this.instrument, color: hex })
 
         // todo: need to install color helper to choose darken1, and ligthen2 colors
 
         // root.style.setProperty('--v-hihatColor-darken1', '#EC407A')
-      }
-    },
-    computed: {
-      instrument: function () {
-        return this.$store.state.colorPicker.instrument
-      },
-      buttonColor: function () {
-        const { instrument } = this
-        return `${instrument}Color`
-      }
-    },
-    methods: {
-      close: function () {
-        this.$store.commit('colorPicker/close')
       }
     }
   }
