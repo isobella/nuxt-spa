@@ -87,10 +87,19 @@ import Color from 'color'
         this.$store.commit('colorPicker/close')
       },
       updateColor: function ({ hex }) {
-        // --v-hihatColor-base: 
-        // --v-hihatColor-lighten2: #85e783;
-        // --v-hihatColor-darken1: #2d9437;
+        const { instrument } = this
+        const root = document.documentElement
+        const colorData = Color(hex)
+        const darken1Data = colorData.darken(0.2)
+        const lighten2Data = colorData.lighten(0.5)
 
+        root.style.setProperty(`--v-${instrument}Color-base`, hex)
+        root.style.setProperty(`--v-${instrument}Color-darken1`, darken1Data.hex())
+        root.style.setProperty(`--v-${instrument}Color-lighten2`, lighten2Data.hex())
+
+        this.$store.commit('instrumentColors/changeInstrumentColor', { instrument: this.instrument, color: hex })
+        
+        // todo: should set these as well really...
         // --v-hihatColor-lighten5: #dcffd6;
         // --v-hihatColor-lighten4: #beffba;
         // --v-hihatColor-lighten3: #a2ff9e;
@@ -98,18 +107,6 @@ import Color from 'color'
         // --v-hihatColor-darken2: #00791e;
         // --v-hihatColor-darken3: #006000;
         // --v-hihatColor-darken4: #004700;
-
-        const { instrument } = this
-
-        let root = document.documentElement
-
-        root.style.setProperty(`--v-${instrument}Color-base`, hex)
-
-        this.$store.commit('instrumentColors/changeInstrumentColor', { instrument: this.instrument, color: hex })
-
-        // todo: need to install color helper to choose darken1, and ligthen2 colors
-
-        // root.style.setProperty('--v-hihatColor-darken1', '#EC407A')
       }
     }
   }
