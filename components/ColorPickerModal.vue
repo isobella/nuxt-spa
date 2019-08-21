@@ -5,13 +5,14 @@
     >
       <v-card>
         <v-card-title
-          class="headline grey lighten-2"
+          :class="titleClasses"
         >
         Select {{ instrument }} colour
       </v-card-title>
         <v-card-text class="colorPickerContainer">
           <v-color-picker
             width="auto"
+            mode="hexa"
             flat
             hide-canvas
             hide-inputs
@@ -60,7 +61,8 @@ import Color from 'color'
     },
     data: () => {
       return {
-        isDarkColor: false
+        isDarkColor: false,
+        titleClasses: `headline`
       }
     },
     computed: {
@@ -80,6 +82,9 @@ import Color from 'color'
       color: function (color) {
         const colorData = Color(color)
         this.$data.isDarkColor = colorData.isDark()
+      },
+      instrument: function (instrument) {
+        this.$data.titleClasses = `headline ${instrument}Color`
       }
     },
     methods: {
