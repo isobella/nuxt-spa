@@ -47,6 +47,9 @@
     justify-content: center;
     margin: 1rem 0;
   }
+  .inverse {
+    color: #ffffff
+  }
 </style>
 
 <script>
@@ -80,11 +83,10 @@ import Color from 'color'
     },
     watch: {
       color: function (color) {
-        const colorData = Color(color)
-        this.$data.isDarkColor = colorData.isDark()
-      },
-      instrument: function (instrument) {
-        this.$data.titleClasses = `headline ${instrument}Color`
+        const isDark = Color(color).isDark()
+        const inverseClass = (isDark) ? 'inverse' : ''
+        this.$data.isDarkColor = isDark
+        this.$data.titleClasses = `headline ${this.instrument}Color ${inverseClass}`
       }
     },
     methods: {
