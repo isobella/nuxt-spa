@@ -28,8 +28,9 @@
           <v-spacer></v-spacer>
 
           <v-btn
-            :color="buttonColor"
+            :color="instrumnetColor"
             block
+            :dark="isDarkColor"
             v-on:click="close"
           >
             Save
@@ -48,6 +49,7 @@
 </style>
 
 <script>
+import Color from 'color'
   export default {
     name: "ColorPickerModal",
     props: {
@@ -56,17 +58,28 @@
         required: true
       }
     },
+    data: () => {
+      return {
+        isDarkColor: false
+      }
+    },
     computed: {
       instrument: function () {
         return this.$store.state.colorPicker.instrument
       },
-      buttonColor: function () {
+      instrumnetColor: function () {
         const { instrument } = this
         return `${instrument}Color`
       },
       color: function () {
         const { instrument } = this
         return this.$store.state.instrumentColors[instrument]
+      },
+    },
+    watch: {
+      color: function (color) {
+        const colorData = Color(color)
+        this.$data.isDarkColor = colorData.isDark()
       }
     },
     methods: {
