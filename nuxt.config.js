@@ -65,13 +65,13 @@ export default {
           success: colors.green.accent3,
 
           inactiveColor: colors.grey.darken1,
-          hihatColor: colors.green.base,
-          clapColor: colors.pink.base,
-          cowbellColor: colors.purple.base,
-          kickColor: colors.lime.base,
-          rideColor: colors.red.base,
-          rimColor: colors.blue.base,
-          snareColor: colors.orange.base
+          hihatColor: colors.green.lighten1,
+          clapColor: colors.pink.lighten1,
+          cowbellColor: colors.purple.lighten1,
+          kickColor: colors.lime.lighten1,
+          rideColor: colors.red.lighten1,
+          rimColor: colors.blue.lighten1,
+          snareColor: colors.orange.lighten1
         }
       }
     }
