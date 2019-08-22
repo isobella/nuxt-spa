@@ -17,20 +17,16 @@
 
 <style>
   .step {
-    background-color: var(--v-primary-base);
+    background-color: var(--v-inactiveColor-base);
     flex: 1 0 0;
     height: 50px;
-    border-left: 1px solid var(--v-primary-darken1);
-    border-bottom: 1px solid var(--v-primary-darken1);
-    border-top: 1px solid var(--v-primary-darken1);
+    border-left: 1px solid var(--v-inactiveColor-darken1);
+    border-bottom: 1px solid var(--v-inactiveColor-darken1);
+    border-top: 1px solid var(--v-inactiveColor-darken1);
   }
   .playing {
-    background-color: var(--v-primary-lighten1);
-    border-color: var(--v-primary-base);
-  }
-
-  .active {
-    transition: background-color 0.2s;
+    background-color: var(--v-inactiveColor-lighten1);
+    border-color: var(--v-inactiveColor-base);
   }
 
   .active.clap {

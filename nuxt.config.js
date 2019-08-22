@@ -57,13 +57,14 @@ export default {
       themes: {
         light: {
           primary: colors.grey.darken2,
-          accent: colors.green.base,
+          accent: colors.pink.base,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
 
+          inactiveColor: colors.grey.base,
           hihatColor: colors.green.base,
           clapColor: colors.pink.base,
           cowbellColor: colors.purple.base,

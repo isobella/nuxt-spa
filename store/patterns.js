@@ -223,7 +223,7 @@ export const state = () => ({
       ]
     }
   ],
-  selectedPatternIndex: 4
+  selectedPatternIndex: 7
 })
 
 export const mutations = {
