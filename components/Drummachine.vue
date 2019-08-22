@@ -7,7 +7,7 @@
         <v-select
           :items="patternNames"
           label="Preset tracks"
-          :value="selectedTrackIndex"
+          :value="selectedPatternIndex"
           v-on:change="changeTrack"
           :disabled="playing"
           outlined
@@ -27,12 +27,12 @@
 
   <div class="tracksContainer">
     <Track
-      v-for="track in patterns[selectedTrackIndex].tracks"
+      v-for="track in patterns[selectedPatternIndex].tracks"
       :key="track.instrument"
       :instrument="track.instrument"
       :steps="track.steps"
       :currentStep="currentStep"
-      :beatsPerMinute="patterns[selectedTrackIndex].beatsPerMinute"
+      :beatsPerMinute="patterns[selectedPatternIndex].beatsPerMinute"
     />
   </div>
 
@@ -73,6 +73,7 @@ const instuments = [
   'ride',
   'rim'
 ]
+
 export default {
   name: "Drummachine",
   components: {
@@ -82,15 +83,17 @@ export default {
     ColorPickerModal
   },
   created: function () {
+    const patterns = this.$store.state.patterns.patterns
+
     const audioEngine = new AudioEngine({ onStep: ({ position }) => {
       this.onStep(position)
     }})
 
     audioEngine.prepare().then(() => {
       // todo: show loading state while 'preparing'
-      audioEngine.setPattern(this.$data.patterns[this.$data.selectedTrackIndex])
+      audioEngine.setPattern(patterns[this.selectedPatternIndex])
     })
-    this.$data.patterns = this.$store.state.patterns.patterns
+    this.$data.patterns = patterns
     this.$data.audioEngine = audioEngine
   },
   data: () => {
@@ -99,7 +102,6 @@ export default {
       instuments: instuments,
       currentStep: -1,
       playing: false,
-      selectedTrackIndex: 1
     }
   },
   computed: {
@@ -111,13 +113,16 @@ export default {
         }
       })
     },
+    selectedPatternIndex: function () {
+      return this.$store.state.patterns.selectedPatternIndex
+    },
     colorPickerOpen: function () {
       return this.$store.state.colorPicker.open
     }
   },
   methods: {
     start: function () {
-      this.$data.audioEngine.startClock(this.$data.patterns[this.$data.selectedTrackIndex].beatsPerMinute);
+      this.$data.audioEngine.startClock(this.$data.patterns[this.selectedPatternIndex].beatsPerMinute);
       this.$data.playing = true;
     },
     stop: function () {
@@ -129,7 +134,7 @@ export default {
     },
     changeTrack: function (index) {
       this.$data.audioEngine.setPattern(this.$data.patterns[index])
-      this.$data.selectedTrackIndex = index
+      this.$store.commit('patterns/changeSelectedPattern', index)
     }
   }
 }

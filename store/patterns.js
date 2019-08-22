@@ -222,8 +222,12 @@ export const state = () => ({
         }
       ]
     }
-  ]
+  ],
+  selectedPatternIndex: 4
 })
 
 export const mutations = {
+  changeSelectedPattern (state, index) {
+    state.selectedPatternIndex = index
+  }
 }
