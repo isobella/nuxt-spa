@@ -5,6 +5,7 @@
       outlined
       block
       large
+      elevation="1"
       class="colorPickerButton"
     >
       <span :class="{
