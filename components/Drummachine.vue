@@ -3,7 +3,7 @@
 
   <v-container grid-list-xl class="fill-width">
     <v-layout fill-height>
-      <v-flex xs6>
+      <v-flex xs4>
         <v-select
           :items="patternNames"
           label="Preset tracks"
@@ -15,13 +15,25 @@
         ></v-select>
       </v-flex>
 
-      <v-flex xs6>
+      <v-flex xs3>
+        <v-text-field
+          label="Beats per min"
+          :value="beatsPerMin"
+          :disabled="playing"
+          type="number"
+          hide-details
+          outlined
+        />
+      </v-flex>
+
+      <v-flex xs5>
         <PlayStopButton
           :play="start"
           :playing="playing"
           :stop="stop"
         />
       </v-flex>
+
     </v-layout>
   </v-container>
 
@@ -32,7 +44,7 @@
       :instrument="track.instrument"
       :steps="track.steps"
       :currentStep="currentStep"
-      :beatsPerMinute="patterns[selectedPatternIndex].beatsPerMinute"
+      :beatsPerMinute="beatsPerMin"
     />
   </div>
 
@@ -110,11 +122,14 @@ export default {
     },
     instuments: function () {
       return this.$store.getters['patterns/instrumentsInSelectedPattern']
+    },
+    beatsPerMin: function () {
+      return this.$store.getters['patterns/beatsPerMin']
     }
   },
   methods: {
     start: function () {
-      this.$data.audioEngine.startClock(this.$data.patterns[this.selectedPatternIndex].beatsPerMinute);
+      this.$data.audioEngine.startClock(this.beatsPerMin);
       this.$data.playing = true;
     },
     stop: function () {
