@@ -231,3 +231,9 @@ export const mutations = {
     state.selectedPatternIndex = index
   }
 }
+
+export const getters = {
+  instrumentsInSelectedPattern (state) {
+    return state.patterns[state.selectedPatternIndex].tracks.map(track => track.instrument)
+  }
+}

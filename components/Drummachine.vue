@@ -64,16 +64,6 @@ import Track from '~/components/Track.vue'
 import InstrumentColorsKey from '~/components/InstrumentColorsKey.vue'
 import ColorPickerModal from '~/components/ColorPickerModal.vue'
 
-const instuments = [
-  'hihat',
-  'snare',
-  'clap',
-  'kick',
-  'cowbell',
-  'ride',
-  'rim'
-]
-
 export default {
   name: "Drummachine",
   components: {
@@ -99,7 +89,6 @@ export default {
   data: () => {
     return {
       patterns: [],
-      instuments: instuments,
       currentStep: -1,
       playing: false,
     }
@@ -118,6 +107,9 @@ export default {
     },
     colorPickerOpen: function () {
       return this.$store.state.colorPicker.open
+    },
+    instuments: function () {
+      return this.$store.getters['patterns/instrumentsInSelectedPattern']
     }
   },
   methods: {
