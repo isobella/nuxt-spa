@@ -1,6 +1,6 @@
 // credit: https://github.com/noops-challenge/drumbot
 
-import SamplePlayer from './SamplePlayer';
+import SamplePlayer from '~/static/js/SamplePlayer';
 
 const samples = [
   'clap',
