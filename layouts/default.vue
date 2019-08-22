@@ -57,7 +57,7 @@ export default {
         }
       ],
       right: true,
-      title: `Beat Bot`
+      title: `Bells Beat Bop`
     }
   }
 }

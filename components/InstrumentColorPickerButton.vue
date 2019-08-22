@@ -19,7 +19,7 @@
         snare
       }" />
       <span class="colorPickerButtonText">
-      {{ instrument }}
+      = {{ instrument }}
       </span>
     </v-btn>
   </v-flex>

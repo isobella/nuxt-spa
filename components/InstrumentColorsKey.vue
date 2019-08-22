@@ -1,6 +1,9 @@
 <template>
   <v-card class="instumentsCard">
-    <v-card-title class="headline">Select colors for the instruments</v-card-title>
+    <v-card-title class="titleContainer grey lighten-3">
+      <h2 class="subtitle-1">Instrument colours key:</h2>
+      <p class="caption noteText">Tap to select new colors</p>
+    </v-card-title>
     <v-card-text>
       <v-container grid-list-lg class="fill-width">
         <v-layout wrap>
@@ -22,6 +25,14 @@
 </template>
 
 <style scoped>
+  .titleContainer {
+    display: block;
+    text-align: left;
+    padding: 0.5rem 1rem;
+  }
+  .noteText {
+    margin-bottom: 0;
+  }
   .instumentsCard {
     margin-top: 1rem;
   }
