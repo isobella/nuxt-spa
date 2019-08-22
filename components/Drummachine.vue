@@ -3,7 +3,7 @@
 
   <v-container grid-list-xl class="fill-width">
     <v-layout fill-height>
-      <v-flex xs4>
+      <v-flex xs5>
         <v-select
           :items="patternNames"
           label="Preset tracks"
@@ -26,7 +26,7 @@
         />
       </v-flex>
 
-      <v-flex xs5>
+      <v-flex xs4>
         <PlayStopButton
           :play="start"
           :playing="playing"
