@@ -73,290 +73,64 @@ const instuments = [
   'ride',
   'rim'
 ]
+export default {
+  name: "Drummachine",
+  components: {
+    Track,
+    InstrumentColorsKey,
+    PlayStopButton,
+    ColorPickerModal
+  },
+  created: function () {
+    const audioEngine = new AudioEngine({ onStep: ({ position }) => {
+      this.onStep(position)
+    }})
 
-const patterns = [
-  {
-    "name": "oontza",
-    "stepCount": 16,
-    "beatsPerMinute": 110,
-    "tracks": [
-      {
-        "instrument": "hihat",
-        "steps": [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,1]
-      },
-      {
-        "instrument": "snare",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
-      }
-    ]
+    audioEngine.prepare().then(() => {
+      // todo: show loading state while 'preparing'
+      audioEngine.setPattern(this.$data.patterns[this.$data.selectedTrackIndex])
+    })
+    this.$data.patterns = this.$store.state.patterns.patterns
+    this.$data.audioEngine = audioEngine
   },
-  {
-  "name": "bossanoopa",
-  "stepCount": 16,
-  "beatsPerMinute": 110,
-  "tracks": [
-      {
-        "instrument": "ride",
-        "steps": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
-      },
-      {
-        "instrument": "hihat",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "rim",
-        "steps": [1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1]
-      }
-    ]
+  data: () => {
+    return {
+      patterns: [],
+      instuments: instuments,
+      currentStep: -1,
+      playing: false,
+      selectedTrackIndex: 1
+    }
   },
-  {
-  "name": "nipnop",
-  "stepCount": 16,
-  "beatsPerMinute": 92,
-  "tracks": [
-      {
-        "instrument": "snare",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "clap",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1]
-      },
-      {
-        "instrument": "cowbell",
-        "steps": [0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0]
-      }
-    ]
-  },
-  {
-  "name": "botthisway",
-  "stepCount": 16,
-  "beatsPerMinute": 100,
-  "tracks": [
-      {
-        "instrument": "hihat",
-        "steps": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
-      },
-      {
-        "instrument": "snare",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "clap",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0]
-      }
-    ]
-  },
-  {
-  "name": "funkee",
-  "stepCount": 16,
-  "beatsPerMinute": 94,
-  "tracks": [
-      {
-        "instrument": "hihat",
-        "steps": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-      },
-      {
-        "instrument": "rim",
-        "steps": [0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0]
-      },
-      {
-        "instrument": "snare",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0]
-      }
-    ]
-  },
-  {
-  "name": "shlojam",
-  "stepCount": 16,
-  "beatsPerMinute": 72,
-  "tracks": [
-      {
-        "instrument": "hihat",
-        "steps": [1,0,1,0,0,1,1,1,1,0,1,0,0,1,1,1]
-      },
-      {
-        "instrument": "rim",
-        "steps": [0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0]
-      },
-      {
-        "instrument": "clap",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0]
-      }
-    ]
-  },
-  {
-  "name": "botorik",
-  "stepCount": 16,
-  "beatsPerMinute": 120,
-  "tracks": [
-      {
-        "instrument": "hihat",
-        "steps": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
-      },
-      {
-        "instrument": "snare",
-        "steps": [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0]
-      },
-      {
-        "instrument": "cowbell",
-        "steps": [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
-      }
-    ]
-  },
-  {
-  "name": "swoop",
-  "stepCount": 12,
-  "beatsPerMinute": 95,
-  "tracks": [
-      {
-        "instrument": "ride",
-        "steps": [1,0,1,0,1,0,1,0,1,0,1,0]
-      },
-      {
-        "instrument": "hihat",
-        "steps": [0,0,0,1,0,0,0,0,0,0,1,0]
-      },
-      {
-        "instrument": "rim",
-        "steps": [0,0,0,0,0,0,1,0,0,0,0,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,0,0,0,1,0,0,0,0,0,1,0]
-      }
-    ]
-  },
-  {
-  "name": "schmaltz",
-  "stepCount": 12,
-  "beatsPerMinute": 105,
-  "tracks": [
-      {
-        "instrument": "ride",
-        "steps": [1,0,1,0,1,0,1,0,0,1,0,0]
-      },
-      {
-        "instrument": "hihat",
-        "steps": [0,0,0,1,0,0,0,0,0,0,1,0]
-      },
-      {
-        "instrument": "rim",
-        "steps": [0,0,1,0,1,0,0,0,1,0,1,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,0,0,0,0,0,1,0,0,0,0,0]
-      }
-    ]
-  },
-  {
-  "name": "bouncy",
-  "stepCount": 16,
-  "beatsPerMinute": 125,
-  "tracks": [
-      {
-        "instrument": "hihat",
-        "steps": [1,0,1,1,1,0,0,1,1,0,1,1,1,0,0,1]
-      },
-      {
-        "instrument": "rim",
-        "steps": [0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0]
-      },
-      {
-        "instrument": "kick",
-        "steps": [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
-      }
-    ]
-  }
-]
-  export default {
-    name: "Drummachine",
-    components: {
-      Track,
-      InstrumentColorsKey,
-      PlayStopButton,
-      ColorPickerModal
-    },
-    created: function () {
-      const audioEngine = new AudioEngine({ onStep: ({ position }) => {
-        this.onStep(position)
-      }})
-
-      audioEngine.prepare().then(() => {
-        // todo: show loading state while 'preparing'
-        audioEngine.setPattern(this.$data.patterns[this.$data.selectedTrackIndex])
+  computed: {
+    patternNames: function () {
+      return this.$data.patterns.map((pattern, index) => {
+        return {
+          text: pattern.name,
+          value: index
+        }
       })
-
-      this.$data.audioEngine = audioEngine
     },
-    data: () => {
-      return {
-        patterns: patterns,
-        instuments: instuments,
-        currentStep: -1,
-        playing: false,
-        selectedTrackIndex: 1
-      }
+    colorPickerOpen: function () {
+      return this.$store.state.colorPicker.open
+    }
+  },
+  methods: {
+    start: function () {
+      this.$data.audioEngine.startClock(this.$data.patterns[this.$data.selectedTrackIndex].beatsPerMinute);
+      this.$data.playing = true;
     },
-    computed: {
-      patternNames: function () {
-        const patterns = this.$data.patterns
-        return patterns.map((pattern, index) => {
-          return {
-            text: pattern.name,
-            value: index
-          }
-        })
-      },
-      colorPickerOpen: function () {
-        return this.$store.state.colorPicker.open
-      }
+    stop: function () {
+      this.$data.audioEngine.stopClock();
+      this.$data.playing = false;
     },
-    methods: {
-      start: function () {
-        this.$data.audioEngine.startClock(this.$data.patterns[this.$data.selectedTrackIndex].beatsPerMinute);
-        this.$data.playing = true;
-      },
-      stop: function () {
-        this.$data.audioEngine.stopClock();
-        this.$data.playing = false;
-      },
-      onStep: function (position) {
-        this.$data.currentStep = position.step
-      },
-      changeTrack: function (index) {
-        this.$data.audioEngine.setPattern(this.$data.patterns[index])
-        this.$data.selectedTrackIndex = index
-      }
+    onStep: function (position) {
+      this.$data.currentStep = position.step
+    },
+    changeTrack: function (index) {
+      this.$data.audioEngine.setPattern(this.$data.patterns[index])
+      this.$data.selectedTrackIndex = index
     }
   }
+}
 </script>
