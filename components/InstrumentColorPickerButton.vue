@@ -4,7 +4,6 @@
       v-on:click="openColorPicker"
       outlined
       block
-      large
       class="colorPickerButton"
     >
       <span :class="{
@@ -33,8 +32,8 @@
     flex: 1 0 auto;
   }
   .colorKey {
-    flex: 0 0 44px;
-    height: 42px;
+    flex: 0 0 36px;
+    height: 34px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     margin-right: 0.5rem;
