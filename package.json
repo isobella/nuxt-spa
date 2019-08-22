@@ -1,8 +1,8 @@
 {
-  "name": "nuxt-spa",
+  "name": "Beat-Bot",
   "version": "1.0.0",
   "description": "My sweet Nuxt.js project",
-  "author": "Isobella Bradshaw",
+  "author": "Isobella Callaby",
   "private": true,
   "scripts": {
     "test": "jest",
