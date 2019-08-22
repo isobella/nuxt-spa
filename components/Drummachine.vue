@@ -58,7 +58,7 @@
 
 
 <script>
-import AudioEngine from '~/plugins/audioEngine.js'
+import AudioEngine from '~/static/js/audioEngine.js'
 import PlayStopButton from '~/components/PlayStopButton.vue'
 import Track from '~/components/Track.vue'
 import InstrumentColorsKey from '~/components/InstrumentColorsKey.vue'

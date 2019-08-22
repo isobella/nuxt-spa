@@ -1,5 +1,7 @@
 # nuxt-spa
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cbb40654-0cf7-4952-a28f-049219b7836b/deploy-status)](https://app.netlify.com/sites/infallible-booth-68779c/deploys)
+
 > My sweet Nuxt.js project
 
 ## Build Setup

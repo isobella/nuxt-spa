@@ -1,6 +1,6 @@
 // credit: https://github.com/noops-challenge/drumbot
 
-import SoundPlayer from './SoundPlayer';
+import SoundPlayer from '~/static/js/soundPlayer';
 
 const defaultPosition = {
   absolute: -1,

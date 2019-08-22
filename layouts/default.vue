@@ -57,7 +57,7 @@ export default {
         }
       ],
       right: true,
-      title: `Bella's Beat Bot`
+      title: `Beat Bot`
     }
   }
 }
