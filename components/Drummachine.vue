@@ -6,7 +6,7 @@
       <v-flex xs6 sm4>
         <v-select
           :items="patternNames"
-          label="Preset tracks"
+          label="Preset track"
           :value="selectedPatternIndex"
           v-on:change="changeTrack"
           :disabled="playing"
@@ -20,6 +20,7 @@
           label="Beats per min"
           :value="beatsPerMin"
           :disabled="playing"
+          v-on:change="setBeatsPerMin"
           type="number"
           hide-details
           outlined
@@ -44,7 +45,6 @@
       :instrument="track.instrument"
       :steps="track.steps"
       :currentStep="currentStep"
-      :beatsPerMinute="beatsPerMin"
     />
   </div>
 
@@ -141,7 +141,11 @@ export default {
     },
     changeTrack: function (index) {
       this.$data.audioEngine.setPattern(this.$data.patterns[index])
+      this.setBeatsPerMin(undefined)
       this.$store.commit('patterns/changeSelectedPattern', index)
+    },
+    setBeatsPerMin: function (value) {
+      this.$store.commit('patterns/setCustomBeatsPerMin', value)
     }
   }
 }

@@ -7,7 +7,6 @@
         :stepNumber="index + 1"
         :active="step"
         :playing="index === currentStep"
-        :beatsPerMinute="beatsPerMinute"
         :clap="instrument === 'clap'"
         :cowbell="instrument === 'cowbell'"
         :hihat="instrument === 'hihat'"
@@ -47,10 +46,6 @@ import Step from '~/components/Step.vue'
         required: true
       },
       currentStep: {
-        type: Number,
-        required: true
-      },
-      beatsPerMinute: {
         type: Number,
         required: true
       }

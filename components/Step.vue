@@ -131,10 +131,6 @@
         type: Boolean,
         required: true
       },
-      beatsPerMinute: {
-        type: Number,
-        required: true
-      },
       hihat: {
         type: Boolean,
         required: true
@@ -162,13 +158,6 @@
       snare: {
         type: Boolean,
         required: true
-      }
-    },
-    computed: {
-      transitionDelayStyle: function () {
-        // not used now, but may want in future
-        const duration = 60 / this.beatsPerMinute
-        return `transition-duration: ${duration}s;`
       }
     }
   }

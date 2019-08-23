@@ -230,6 +230,9 @@ export const state = () => ({
 export const mutations = {
   changeSelectedPattern (state, index) {
     state.selectedPatternIndex = index
+  },
+  setCustomBeatsPerMin (state, value) {
+    state.customBeatsPerMin = value
   }
 }
 
@@ -238,6 +241,7 @@ export const getters = {
     return state.patterns[state.selectedPatternIndex].tracks.map(track => track.instrument)
   },
   beatsPerMin (state) {
-    return state.patterns[state.selectedPatternIndex].beatsPerMinute
+    const beatsPerMin = state.customBeatsPerMin || state.patterns[state.selectedPatternIndex].beatsPerMinute
+    return parseInt(beatsPerMin)
   }
 }
