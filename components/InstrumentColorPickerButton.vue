@@ -23,10 +23,11 @@
   </v-flex>
 </template>
 
-<style>
+<style scoped>
   .colorPickerButton {
     padding-left: 0 !important;
     justify-content: space-between;
+    font-weight: 400;
   }
   .colorPickerButtonText {
     flex: 1 0 auto;
