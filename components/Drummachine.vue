@@ -32,6 +32,7 @@
           :play="start"
           :playing="playing"
           :stop="stop"
+          :loading="loading"
         />
       </v-flex>
 
@@ -92,7 +93,7 @@ export default {
     }})
 
     audioEngine.prepare().then(() => {
-      // todo: show loading state while 'preparing'
+      this.$data.loading = false
       audioEngine.setPattern(patterns[this.selectedPatternIndex])
     })
     this.$data.patterns = patterns
@@ -103,6 +104,7 @@ export default {
       patterns: [],
       currentStep: -1,
       playing: false,
+      loading: true
     }
   },
   computed: {
