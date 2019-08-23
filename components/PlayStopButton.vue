@@ -14,7 +14,7 @@
 
 <style>
   .playButton {
-    min-height: 100%;
+    min-height: 56px;
   }
 </style>
 

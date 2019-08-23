@@ -2,8 +2,8 @@
 <div>
 
   <v-container grid-list-xl class="fill-width">
-    <v-layout fill-height>
-      <v-flex xs5>
+    <v-layout fill-height wrap>
+      <v-flex xs6 sm4>
         <v-select
           :items="patternNames"
           label="Preset tracks"
@@ -15,7 +15,7 @@
         ></v-select>
       </v-flex>
 
-      <v-flex xs3>
+      <v-flex xs6 sm2>
         <v-text-field
           label="Beats per min"
           :value="beatsPerMin"
@@ -26,7 +26,7 @@
         />
       </v-flex>
 
-      <v-flex xs4>
+      <v-flex xs12 sm6>
         <PlayStopButton
           :play="start"
           :playing="playing"
