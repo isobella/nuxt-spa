@@ -33,7 +33,7 @@
     </v-content>
 
     <v-footer app>
-      <span>&copy; 2019</span>
+      <span class="caption">Inspired by <a href="https://github.com/noops-challenge/drumbot" target="_blank">Github No-op Drumbot</a> ❤️</span>
     </v-footer>
 
   </v-app>
