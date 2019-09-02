@@ -47,7 +47,7 @@
 
   .step.active.playing:after {
     animation-name: example;
-    animation-duration: 6s;
+    animation-duration: var(--beat-animation-duration);
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
