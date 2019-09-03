@@ -224,7 +224,27 @@ export const state = () => ({
     }
   ],
   selectedPatternIndex: 7,
-  customBeatsPerMin: undefined
+  customBeatsPerMin: undefined,
+  cyoMode: false,
+  cyo: {
+    'name': undefined,
+    'stepCount': undefined,
+    'beatsPerMinute': undefined,
+    'tracks': [
+      // {
+      //   'instrument': 'hihat',
+      //   'steps': [1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1]
+      // },
+      // {
+      //   'instrument': 'rim',
+      //   'steps': [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0]
+      // },
+      // {
+      //   'instrument': 'kick',
+      //   'steps': [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
+      // }
+    ]
+  }
 })
 
 export const mutations = {
@@ -233,11 +253,17 @@ export const mutations = {
   },
   setCustomBeatsPerMin (state, value) {
     state.customBeatsPerMin = value
+  },
+  setCyo (state, value) {
+    state.cyoMode = value
   }
 }
 
 export const getters = {
   instrumentsInSelectedPattern (state) {
+    if (state.cyoMode) {
+      return state.cyo.tracks.map(track => track.instrument)
+    }
     return state.patterns[state.selectedPatternIndex].tracks.map(track => track.instrument)
   },
   beatsPerMin (state) {

@@ -4,22 +4,30 @@
   <v-container grid-list-xl class="fill-width">
     <v-layout fill-height wrap>
       <v-flex xs6 sm4>
+
         <v-select
           :items="patternNames"
           label="Preset track"
           :value="selectedPatternIndex"
           v-on:change="changeTrack"
-          :disabled="playing"
+          :disabled="playing || cyo"
           outlined
           hide-details
         ></v-select>
+
+        <v-switch
+          :input-value="cyo"
+          label="Create your own beat"
+          hide-details
+          v-on:change="setCyo"
+        ></v-switch>
       </v-flex>
 
       <v-flex xs6 sm2>
         <v-text-field
           label="Beats per min"
           :value="beatsPerMin"
-          :disabled="playing"
+          :disabled="playing || cyo"
           v-on:change="setBeatsPerMin"
           type="number"
           hide-details
@@ -39,7 +47,7 @@
     </v-layout>
   </v-container>
 
-  <div class="tracksContainer">
+  <div class="tracksContainer" v-if="!cyo">
     <Track
       v-for="track in patterns[selectedPatternIndex].tracks"
       :key="track.instrument"
@@ -49,7 +57,9 @@
     />
   </div>
 
-  <InstrumentColorsKey :instruments="instuments"/>
+  <InstrumentColorsKey
+    v-if="instuments.length"
+    :instruments="instuments"/>
 
   <ColorPickerModal
     :open="colorPickerOpen"
@@ -127,7 +137,10 @@ export default {
     },
     beatsPerMin: function () {
       return this.$store.getters['patterns/beatsPerMin']
-    }
+    },
+    cyo: function () {
+      return this.$store.state.patterns.cyoMode
+    },
   },
   methods: {
     start: function () {
@@ -148,6 +161,9 @@ export default {
     },
     setBeatsPerMin: function (value) {
       this.$store.commit('patterns/setCustomBeatsPerMin', value)
+    },
+    setCyo: function (value) {
+      this.$store.commit('patterns/setCyo', value)
     }
   }
 }
