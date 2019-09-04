@@ -23,10 +23,32 @@
     border-left: 1px solid var(--v-inactiveColor-darken1);
     border-bottom: 1px solid var(--v-inactiveColor-darken1);
     border-top: 1px solid var(--v-inactiveColor-darken1);
+    position: relative;
+    overflow: hidden;
+  }
+  .step:after {
+    content: '';
+    max-width: 150%;
+    max-height: 150%;
+    width: 0px;
+    height: 0px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate3d(-50%, -50%, 0);
   }
   .playing {
     background-color: var(--v-inactiveColor-lighten1);
     border-color: var(--v-inactiveColor-base);
+  }
+
+  .step.active.playing:after {
+    animation-name: example;
+    animation-duration: var(--beat-animation-duration);
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .active.clap {
@@ -36,9 +58,8 @@
     border-bottom-color: var(--v-clapColor-darken1);
     border-top-color: var(--v-clapColor-darken1);
   }
-  .playing.active.clap {
+  .active.clap:after {
     background-color: var(--v-clapColor-lighten2);
-    border-color: var(--v-clapColor-base);
   }
 
   .active.cowbell {
@@ -48,9 +69,8 @@
     border-bottom-color: var(--v-cowbellColor-darken1);
     border-top-color: var(--v-cowbellColor-darken1);
   }
-  .playing.active.cowbell {
-    background-color: var(--v-cowbellColor-lighten2);
-    border-color: var(--v-cowbellColor-base);
+  .active.cowbell:after {
+    background-color: var(--v-cowbellColor-lighten2)
   }
 
   .active.hihat {
@@ -60,9 +80,8 @@
     border-bottom-color: var(--v-hihatColor-darken1);
     border-top-color: var(--v-hihatColor-darken1);
   }
-  .playing.active.hihat {
+  .active.hihat:after {
     background-color: var(--v-hihatColor-lighten2);
-    border-color: var(--v-hihatColor-base);
   }
 
   .active.kick {
@@ -72,9 +91,8 @@
     border-bottom-color: var(--v-kickColor-darken1);
     border-top-color: var(--v-kickColor-darken1);
   }
-  .playing.active.kick {
-    background-color: var(--v-kickColor-lighten2);
-    border-color: var(--v-kickColor-base);
+  .active.kick:after {
+    background-color: var(--v-kickColor-lighten2)
   }
 
   .active.ride {
@@ -84,9 +102,8 @@
     border-bottom-color: var(--v-rideColor-darken1);
     border-top-color: var(--v-rideColor-darken1);
   }
-  .playing.active.ride {
+  .active.ride:after {
     background-color: var(--v-rideColor-lighten2);
-    border-color: var(--v-rideColor-base);
   }
 
   .active.rim {
@@ -96,9 +113,8 @@
     border-bottom-color: var(--v-rimColor-darken1);
     border-top-color: var(--v-rimColor-darken1);
   }
-  .playing.active.rim {
+  .active.rim:after {
     background-color: var(--v-rimColor-lighten2);
-    border-color: var(--v-rimColor-base);
   }
 
   .active.snare {
@@ -108,10 +124,14 @@
     border-bottom-color: var(--v-snareColor-darken1);
     border-top-color: var(--v-snareColor-darken1);
   }
-  .playing.active.snare {
+  .active.snare:after {
     background-color: var(--v-snareColor-lighten2);
-    border-color: var(--v-snareColor-base);
   }
+
+@keyframes example {
+  0% {width: 0px; height: 0px;}
+  100% {width: 110px; height: 110px;}
+}
 
 </style>
 

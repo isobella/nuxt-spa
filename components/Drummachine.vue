@@ -87,6 +87,7 @@ export default {
   },
   created: function () {
     const patterns = this.$store.state.patterns.patterns
+    const selectedPattern = patterns[this.selectedPatternIndex]
 
     const audioEngine = new AudioEngine({ onStep: ({ position }) => {
       this.onStep(position)
@@ -94,8 +95,12 @@ export default {
 
     audioEngine.prepare().then(() => {
       this.$data.loading = false
-      audioEngine.setPattern(patterns[this.selectedPatternIndex])
+      audioEngine.setPattern(selectedPattern)
     })
+
+    const beatAnimationDuration = 60 / selectedPattern.beatsPerMinute
+    document.documentElement.style.setProperty(`--beat-animation-duration`, `${beatAnimationDuration}s`)
+    
     this.$data.patterns = patterns
     this.$data.audioEngine = audioEngine
   },
@@ -127,6 +132,12 @@ export default {
     },
     beatsPerMin: function () {
       return this.$store.getters['patterns/beatsPerMin']
+    }
+  },
+  watch: {
+    beatsPerMin: function (bpm) {
+      const beatAnimationDuration = 60 / bpm
+      document.documentElement.style.setProperty(`--beat-animation-duration`, `${beatAnimationDuration}s`)
     }
   },
   methods: {
