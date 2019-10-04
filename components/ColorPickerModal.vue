@@ -11,7 +11,6 @@
       </v-card-title>
         <v-card-text class="colorPickerContainer">
           <v-color-picker
-            class="test"
             width="auto"
             mode="hexa"
             flat
@@ -42,7 +41,7 @@
     </v-dialog>
 </template>
 
-<style>
+<style scoped>
   .colorPickerContainer {
     display: flex;
     justify-content: center;
@@ -50,9 +49,6 @@
   }
   .inverse {
     color: #ffffff
-  }
-  .test {
-    border: 1px solid red;
   }
 </style>
 
