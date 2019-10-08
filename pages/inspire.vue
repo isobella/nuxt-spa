@@ -9,7 +9,7 @@
       sm8
       md6
     >
-      <v-card>
+      <!-- <v-card>
         <v-card-title class="headline">
           About Papyrus
         </v-card-title>
@@ -34,7 +34,7 @@
             Donate
           </v-btn>
         </v-card-actions>
-      </v-card>
+      </v-card> -->
     </v-flex>
   </v-layout>
 </template>
