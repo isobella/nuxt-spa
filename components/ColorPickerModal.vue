@@ -48,7 +48,7 @@
     margin: 1rem 0;
   }
   .inverse {
-    color: #ffffff
+    color: #ffffff;
   }
 </style>
 
