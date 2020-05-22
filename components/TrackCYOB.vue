@@ -10,7 +10,7 @@
         v-on:change="changeInstrumentForTrack"
       ></v-select>
     <ul class="stepsList">
-      <Step
+      <StepCYOB
         v-for="(step, index) in steps" :key="index"
         :stepNumber="index + 1"
         :active="step"
@@ -22,6 +22,7 @@
         :ride="instrument === 'ride'"
         :rim="instrument === 'rim'"
         :snare="instrument === 'snare'"
+        :onStepClick="onStepClick"
       />
     </ul>
   </div>
@@ -40,11 +41,11 @@
 </style>
 
 <script>
-import Step from '~/components/Step.vue'
+import StepCYOB from '~/components/StepCYOB.vue'
   export default {
     name: "Track",
     components: {
-      Step
+      StepCYOB
     },
     props: {
       instrument: {
@@ -82,6 +83,9 @@ import Step from '~/components/Step.vue'
     methods: {
       changeInstrumentForTrack: function (value) {
         this.$props.onChangeInstrument({trackIndex: this.$props.index, instrument: value})
+      },
+      onStepClick: function ({ stepIndex, newStatus }) {
+        console.log(`from track: instument ${this.$props.instrument} step at ${stepIndex} should now be ${(newStatus) ? 'on' : 'off'}`)
       }
     }
   }
