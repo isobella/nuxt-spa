@@ -4,7 +4,21 @@
   <v-container grid-list-xl class="fill-width">
     <v-layout fill-height wrap>
 
-      <v-flex xs12>
+
+      <v-flex xs12 sm4>
+        <v-text-field
+          label="Beats per min"
+          :value="beatsPerMin"
+          :disabled="playing"
+          v-on:change="setBeatsPerMin"
+          type="number"
+          hide-details
+          outlined
+        />
+      </v-flex>
+
+
+      <v-flex xs12 sm8>
         <PlayStopButton
           :play="start"
           :playing="playing"
@@ -13,8 +27,9 @@
         />
       </v-flex>
 
-    <v-flex xs12>
 
+
+    <v-flex xs12>
       <div class="tracksContainer">
         <TrackCYOB
           v-for="(track, index) in pattern.tracks"
@@ -125,7 +140,8 @@ export default {
       loading: true,
       instruments: [
         'clap', 'kick', 'hihat', 'snare', 'ride', 'cowbell', 'rim'
-      ]
+      ],
+      beatsPerMin: 60
     }
   },
   computed: {
@@ -134,10 +150,14 @@ export default {
     }
   },
   watch: {
+    beatsPerMin: function (bpm) {
+      const beatAnimationDuration = 60 / bpm
+      document.documentElement.style.setProperty(`--beat-animation-duration`, `${beatAnimationDuration}s`)
+    }
   },
   methods: {
     start: function () {
-      this.$data.audioEngine.startClock(60);
+      this.$data.audioEngine.startClock(this.$data.beatsPerMin);
       this.$data.playing = true;
     },
     stop: function () {
@@ -170,6 +190,9 @@ export default {
         tracks: newTracks
       }
       this.$data.pattern = newPattern
+    },
+    setBeatsPerMin: function (value) {
+      this.$data.beatsPerMin = value
     }
   }
 }
