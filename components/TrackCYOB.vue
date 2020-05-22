@@ -71,6 +71,9 @@ import StepCYOB from '~/components/StepCYOB.vue'
       index: {
         type: Number,
         required: true
+      },
+      onUpateStep: {
+        type: Function
       }
     },
     data: () => {
@@ -85,7 +88,11 @@ import StepCYOB from '~/components/StepCYOB.vue'
         this.$props.onChangeInstrument({trackIndex: this.$props.index, instrument: value})
       },
       onStepClick: function ({ stepIndex, newStatus }) {
-        console.log(`from track: instument ${this.$props.instrument} step at ${stepIndex} should now be ${(newStatus) ? 'on' : 'off'}`)
+        this.$props.onUpateStep({
+          trackIndex: this.$props.index,
+          stepIndex,
+          newStatus
+        })
       }
     }
   }

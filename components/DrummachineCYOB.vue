@@ -24,6 +24,7 @@
           :currentStep="currentStep"
           :playing="playing"
           :onChangeInstrument="changeInstrumentForTrack"
+          :onUpateStep="updateStepForTrack"
           :index="index"
         />
       </div>
@@ -50,6 +51,7 @@
 import AudioEngine from '~/static/js/audioEngine.js'
 import PlayStopButton from '~/components/PlayStopButton.vue'
 import TrackCYOB from '~/components/TrackCYOB.vue'
+import _ from 'lodash'
 
 export default {
   name: "Drummachine",
@@ -125,6 +127,32 @@ export default {
         tracks: newTracks
       }
 
+      this.$data.pattern = newPattern
+    },
+    updateStepForTrack: function ({ trackIndex, stepIndex, newStatus }) {
+      console.log('hello', { trackIndex, stepIndex, newStatus })
+
+      const newStepStatus = (newStatus) ? 1 : 0
+
+      const { pattern } = this.$data
+      const currentTrack = pattern.tracks[trackIndex]
+      const newSteps = currentTrack.steps
+      newSteps[stepIndex] = newStepStatus
+
+      const newNewSteps = _.filter(newSteps, (item) => typeof item === 'number')
+
+      const newTrack = {
+        ...currentTrack,
+        steps: newNewSteps
+      }
+
+      const newTracks = pattern.tracks
+      newTracks[trackIndex] = newTrack
+
+      const newPattern = {
+        ...pattern,
+        tracks: newTracks
+      }
       this.$data.pattern = newPattern
     }
   }
