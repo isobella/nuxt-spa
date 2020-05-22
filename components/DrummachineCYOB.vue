@@ -29,6 +29,13 @@
       </div>
     </v-flex>
 
+<v-flex xs12>
+  <InstrumentColorsKey :instruments="instruments"/>
+</v-flex>
+  <ColorPickerModal
+    :open="colorPickerOpen"
+    />
+
     </v-layout>
   </v-container>
   
@@ -51,12 +58,16 @@ import AudioEngine from '~/static/js/audioEngine.js'
 import PlayStopButton from '~/components/PlayStopButton.vue'
 import TrackCYOB from '~/components/TrackCYOB.vue'
 import _ from 'lodash'
+import InstrumentColorsKey from '~/components/InstrumentColorsKey.vue'
+import ColorPickerModal from '~/components/ColorPickerModal.vue'
 
 export default {
   name: "Drummachine",
   components: {
     PlayStopButton,
-    TrackCYOB
+    TrackCYOB,
+    InstrumentColorsKey,
+    ColorPickerModal
   },
   created: function () {
     const pattern = {
@@ -111,10 +122,16 @@ export default {
       pattern: {},
       currentStep: -1,
       playing: false,
-      loading: true
+      loading: true,
+      instruments: [
+        'clap', 'kick', 'hihat', 'snare', 'ride', 'cowbell', 'rim'
+      ]
     }
   },
   computed: {
+    colorPickerOpen: function () {
+      return this.$store.state.colorPicker.open
+    }
   },
   watch: {
   },
