@@ -28,6 +28,15 @@
     overflow: hidden;
     cursor: pointer;
   }
+  .step:first-child {
+    border-left: 2px solid var(--v-inactiveColor-darken3) !important;
+  }
+  .step:nth-child(4) {
+    border-right: 2px solid var(--v-inactiveColor-darken3) !important;
+  }
+  .step:last-child {
+    border-right: 2px solid var(--v-inactiveColor-darken3) !important;
+  }
   .step:after {
     content: '';
     max-width: 150%;

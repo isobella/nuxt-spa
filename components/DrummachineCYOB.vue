@@ -87,11 +87,11 @@ export default {
   created: function () {
     const pattern = {
       'stepCount': 8,
-      'beatsPerMinute': 60,
+      'beatsPerMinute': 120,
       'tracks': [
         {
           'instrument': 'clap',
-          'steps': [1, 1, 1, 1, 1, 1, 1, 1]
+          'steps': [0, 0, 0, 0, 0, 0, 0, 0]
           // steps: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
@@ -148,7 +148,7 @@ export default {
       instruments: [
         'clap', 'kick', 'hihat', 'snare', 'ride', 'cowbell', 'rim'
       ],
-      beatsPerMin: 60
+      beatsPerMin: 120
     }
   },
   computed: {
