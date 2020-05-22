@@ -1,14 +1,5 @@
 <template>
   <div class="trackContainer">
-      <v-select
-        :items="instruments"
-        label="Select instrument"
-        :value="instrument"
-        :disabled="playing"
-        outlined
-        hide-details
-        v-on:change="changeInstrumentForTrack"
-      ></v-select>
     <ul class="stepsList">
       <StepCYOB
         v-for="(step, index) in steps" :key="index"
@@ -29,9 +20,9 @@
 </template>
 
 <style>
-  .trackContainer {
+  /* .trackContainer {
     margin-bottom: 2rem;
-  }
+  } */
   .stepsList {
     list-style-type: none;
     padding-left: 0 !important;
@@ -64,10 +55,6 @@ import StepCYOB from '~/components/StepCYOB.vue'
         type: Boolean,
         required: true
       },
-      onChangeInstrument: {
-        type: Function,
-        required: true
-      },
       index: {
         type: Number,
         required: true
@@ -84,9 +71,6 @@ import StepCYOB from '~/components/StepCYOB.vue'
       }
     },
     methods: {
-      changeInstrumentForTrack: function (value) {
-        this.$props.onChangeInstrument({trackIndex: this.$props.index, instrument: value})
-      },
       onStepClick: function ({ stepIndex, newStatus }) {
         this.$props.onUpateStep({
           trackIndex: this.$props.index,

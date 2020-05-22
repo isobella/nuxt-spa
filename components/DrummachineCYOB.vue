@@ -23,7 +23,6 @@
           :steps="track.steps"
           :currentStep="currentStep"
           :playing="playing"
-          :onChangeInstrument="changeInstrumentForTrack"
           :onUpateStep="updateStepForTrack"
           :index="index"
         />
@@ -66,11 +65,31 @@ export default {
       'tracks': [
         {
           'instrument': 'clap',
-          'steps': [1, 0, 1, 0]
+          'steps': [0, 0, 0, 0]
         },
         {
           'instrument': 'kick',
-          'steps': [1, 1, 0, 0]
+          'steps': [0, 0, 0, 0]
+        },
+        {
+          'instrument': 'hihat',
+          'steps': [0, 0, 0, 0]
+        },
+        {
+          'instrument': 'snare',
+          'steps': [0, 0, 0, 0]
+        },
+        {
+          'instrument': 'ride',
+          'steps': [0, 0, 0, 0]
+        },
+        {
+          'instrument': 'cowbell',
+          'steps': [0, 0, 0, 0]
+        },
+        {
+          'instrument': 'rim',
+          'steps': [0, 0, 0, 0]
         }
       ]
     }
@@ -111,27 +130,7 @@ export default {
     onStep: function (position) {
       this.$data.currentStep = position.step
     },
-    changeInstrumentForTrack: function ({ trackIndex, instrument }) {
-      const { pattern } = this.$data
-      const currentTrack = pattern.tracks[trackIndex]
-      const newTrack = {
-        ...currentTrack,
-        instrument
-      }
-
-      const newTracks = pattern.tracks
-      newTracks[trackIndex] = newTrack
-
-      const newPattern = {
-        ...pattern,
-        tracks: newTracks
-      }
-
-      this.$data.pattern = newPattern
-    },
     updateStepForTrack: function ({ trackIndex, stepIndex, newStatus }) {
-      console.log('hello', { trackIndex, stepIndex, newStatus })
-
       const newStepStatus = (newStatus) ? 1 : 0
 
       const { pattern } = this.$data
