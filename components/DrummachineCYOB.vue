@@ -86,36 +86,43 @@ export default {
   },
   created: function () {
     const pattern = {
-      'stepCount': 4,
+      'stepCount': 8,
       'beatsPerMinute': 60,
       'tracks': [
         {
           'instrument': 'clap',
-          'steps': [0, 0, 0, 0]
+          'steps': [1, 1, 1, 1, 1, 1, 1, 1]
+          // steps: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
           'instrument': 'kick',
-          'steps': [0, 0, 0, 0]
+          'steps': [0, 0, 0, 0, 0, 0, 0, 0]
+          // steps: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
           'instrument': 'hihat',
-          'steps': [0, 0, 0, 0]
+          'steps': [0, 0, 0, 0, 0, 0, 0, 0]
+          // steps: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
           'instrument': 'snare',
-          'steps': [0, 0, 0, 0]
+          'steps': [0, 0, 0, 0, 0, 0, 0, 0]
+          // steps: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
           'instrument': 'ride',
-          'steps': [0, 0, 0, 0]
+          'steps': [0, 0, 0, 0, 0, 0, 0, 0]
+          // steps: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
           'instrument': 'cowbell',
-          'steps': [0, 0, 0, 0]
+          'steps': [0, 0, 0, 0, 0, 0, 0, 0]
+          // steps: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
           'instrument': 'rim',
-          'steps': [0, 0, 0, 0]
+          'steps': [0, 0, 0, 0, 0, 0, 0, 0]
+          // steps: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         }
       ]
     }
