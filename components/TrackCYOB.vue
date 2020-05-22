@@ -7,6 +7,7 @@
         :disabled="playing"
         outlined
         hide-details
+        v-on:change="changeInstrumentForTrack"
       ></v-select>
     <ul class="stepsList">
       <Step
@@ -61,6 +62,14 @@ import Step from '~/components/Step.vue'
       playing: {
         type: Boolean,
         required: true
+      },
+      onChangeInstrument: {
+        type: Function,
+        required: true
+      },
+      index: {
+        type: Number,
+        required: true
       }
     },
     data: () => {
@@ -68,6 +77,11 @@ import Step from '~/components/Step.vue'
         instruments: [
           'clap', 'cowbell', 'hihat', 'kick', 'ride', 'rim', 'snare'
         ]
+      }
+    },
+    methods: {
+      changeInstrumentForTrack: function (value) {
+        this.$props.onChangeInstrument({trackIndex: this.$props.index, instrument: value})
       }
     }
   }

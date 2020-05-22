@@ -17,12 +17,14 @@
 
       <div class="tracksContainer">
         <TrackCYOB
-          v-for="track in pattern.tracks"
+          v-for="(track, index) in pattern.tracks"
           :key="track.instrument"
           :instrument="track.instrument"
           :steps="track.steps"
           :currentStep="currentStep"
           :playing="playing"
+          :onChangeInstrument="changeInstrumentForTrack"
+          :index="index"
         />
       </div>
     </v-flex>
@@ -106,6 +108,24 @@ export default {
     },
     onStep: function (position) {
       this.$data.currentStep = position.step
+    },
+    changeInstrumentForTrack: function ({ trackIndex, instrument }) {
+      const { pattern } = this.$data
+      const currentTrack = pattern.tracks[trackIndex]
+      const newTrack = {
+        ...currentTrack,
+        instrument
+      }
+
+      const newTracks = pattern.tracks
+      newTracks[trackIndex] = newTrack
+
+      const newPattern = {
+        ...pattern,
+        tracks: newTracks
+      }
+
+      this.$data.pattern = newPattern
     }
   }
 }
