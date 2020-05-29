@@ -31,7 +31,7 @@
   .step:first-child {
     border-left: 2px solid var(--v-inactiveColor-darken3) !important;
   }
-  .step:nth-child(4) {
+  .step:nth-child(4n) {
     border-right: 2px solid var(--v-inactiveColor-darken3) !important;
   }
   .step:last-child {

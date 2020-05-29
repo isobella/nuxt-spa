@@ -40,6 +40,15 @@
     z-index: 1;
     transform: translate3d(-50%, -50%, 0);
   }
+  .step:first-child {
+    border-left: 2px solid var(--v-inactiveColor-darken3) !important;
+  }
+  .step:nth-child(4n) {
+    border-right: 2px solid var(--v-inactiveColor-darken3) !important;
+  }
+  .step:last-child {
+    border-right: 2px solid var(--v-inactiveColor-darken3) !important;
+  }
   .playing {
     background-color: var(--v-inactiveColor-lighten1);
     border-color: var(--v-inactiveColor-base);
