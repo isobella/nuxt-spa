@@ -1,7 +1,7 @@
 {
   "name": "bells-beat-bot",
   "version": "1.0.0",
-  "description": "My sweet Nuxt.js project",
+  "description": "Drum bot - inspired by https://noopschallenge.com/",
   "author": "Isobella Callaby",
   "private": true,
   "scripts": {

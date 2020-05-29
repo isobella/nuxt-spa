@@ -57,7 +57,7 @@ export default {
         }
       ],
       right: true,
-      title: `🥁 Bells Beat Bop 🥁`
+      title: `🥁 Drum bot 🥁`
     }
   }
 }
