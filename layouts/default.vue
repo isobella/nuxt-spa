@@ -47,7 +47,7 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Pre-set beats',
+          title: 'Pre-set bops',
           to: '/'
         },
         {
@@ -57,7 +57,7 @@ export default {
         }
       ],
       right: true,
-      title: `🥁 Drum bot 🥁`
+      title: `🥁 Drum bop 🥁`
     }
   }
 }
