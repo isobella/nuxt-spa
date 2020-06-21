@@ -38,7 +38,7 @@
 
     <v-snackbar
       timeout="20000"
-      bottom
+      top
       left
       vertical
       v-model="snackbar"
