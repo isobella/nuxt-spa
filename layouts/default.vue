@@ -36,6 +36,17 @@
       <span class="caption">Inspired by <a href="https://noopschallenge.com" target="_blank">Github Noops Challenge</a> ❤️</span>
     </v-footer>
 
+    <v-snackbar
+      timeout="20000"
+      bottom
+      left
+      vertical
+      v-model="snackbar"
+    >
+      If on a mobile device, remember to turn silent mode off to hear the sounds!
+      <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+    </v-snackbar>
+
   </v-app>
 </template>
 
@@ -44,6 +55,7 @@ export default {
   data () {
     return {
       drawer: false,
+      snackbar: true,
       items: [
         {
           icon: 'mdi-apps',
