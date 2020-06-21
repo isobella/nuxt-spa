@@ -37,18 +37,25 @@
     </v-footer>
 
     <v-snackbar
-      timeout="20000"
+      timeout="60000"
       bottom
       left
       vertical
       v-model="snackbar"
     >
-      If on a mobile device, remember to turn silent mode off to hear the sounds!
+      <div><span class="speaker">🔊</span> If on a mobile device, remember to turn silent mode off to hear the sounds!</div>
       <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
     </v-snackbar>
 
   </v-app>
 </template>
+
+<style scoped>
+  .speaker {
+    font-size: 1.5rem;
+    margin-right: 0.3rem;
+  }
+</style>
 
 <script>
 export default {
