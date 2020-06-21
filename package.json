@@ -1,7 +1,7 @@
 {
   "name": "drum-bop",
   "version": "1.0.0",
-  "description": "Drum bop - drum machine inspired by https://noopschallenge.com/",
+  "description": "Drum bot - drum machine inspired by https://noopschallenge.com/",
   "author": "Isobella Callaby",
   "private": true,
   "scripts": {
